@@ -3,6 +3,7 @@ package Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import utulities.WebDriverFactory;
 
@@ -54,8 +55,15 @@ public class Mixer_Test {
         System.out.println("priceBeforeChart = " + priceBeforeChart);
 
 //        8. Click view cart & checkout
+
 //        9. Verify popup page’s subtotal and check out’s subtotal should be same
 
 
+
+    }
+
+    @AfterMethod
+    public void tearDown(){
+        driver.quit();
     }
 }
