@@ -83,6 +83,7 @@ public class HairDryer {
         //Verify subtotal1 equals subtotal2
 
         Assert.assertEquals ( expected,actual,"verify subtotals are equals" );
+        System.out.println ("finished");
 
     }
 
