@@ -3,6 +3,7 @@ package Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import utulities.WebDriverFactory;
@@ -56,9 +57,15 @@ public class Mixer_Test {
 
 //        8. Click view cart & checkout
 
+        driver.findElement(By.cssSelector("#hlb-view-cart-announce")).click();
+        String chartPrice = driver.findElement(By.xpath("(//span[@class='a-size-medium a-color-base sc-price sc-white-space-nowrap'])[1]")).getText();
+        System.out.println("chartPrice = " + chartPrice);
+
 //        9. Verify popup page’s subtotal and check out’s subtotal should be same
 
+        Assert.assertEquals(chartPrice,priceBeforeChart,"verify subtotal and chart subtotal is equal");
 
+        Thread.sleep(2000);
 
     }
 
