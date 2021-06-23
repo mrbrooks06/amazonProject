@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -42,8 +43,8 @@ public class HairDryer {
         List<WebElement> dropDownElements = driver.findElements(By.className("a-dropdown-item"));
 
        dropDownElements.get ( 4 ).click ();
-
-       Thread.sleep ( 3000 );
+        System.out.println ( dropdownElement.getText () );
+        Thread.sleep ( 3000 );
 
        //first element
 
@@ -64,8 +65,24 @@ public class HairDryer {
         //add to chart
         driver.findElement ( By.xpath ( "(//span/input)[2]" ) ).click ();
         //find cart subTotal
-        WebElement subtotal1=driver.findElement ( By.xpath ( "(//div/span/span)[4]" ) );
+        WebElement subtotal1=driver.findElement ( By.xpath ( "(//div/span/span)[3]" ) );
+
+       String  expected=subtotal1.getText ();
         System.out.println ( subtotal1.getText () );
+
+        //click proceed too checkout
+
+        driver.findElement ( By.xpath ( "(//span/span/a)[1]" ) ).click ();
+
+        //find 2nd sub total
+
+        WebElement subTotal2 =driver.findElement ( By.xpath ( "(//div/span/span)[7]" ) );
+        System.out.println ( subTotal2.getText () );
+        String actual=subTotal2.getText ();
+
+        //Verify subtotal1 equals subtotal2
+
+        Assert.assertEquals ( expected,actual,"verify subtotals are equals" );
 
     }
 
