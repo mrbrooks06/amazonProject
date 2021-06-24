@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>EU5TestNGSelenium</artifactId>
+    <artifactId>wallmart</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -34,7 +34,17 @@
             <artifactId>selenium-java</artifactId>
             <version>3.141.59</version>
         </dependency>
+<<<<<<<<< Temporary merge branch 1
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+=========
 
+        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>4.4.3</version>
+        </dependency>
+>>>>>>>>> Temporary merge branch 2
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
