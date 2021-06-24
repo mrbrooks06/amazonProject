@@ -21,12 +21,13 @@ public class Mixer_Test {
         //        1. Go to https://www.amazon.com/
         driver = WebDriverFactory.getDriver("chrome");
         driver.get(" https://www.amazon.com/");
+        driver.manage().window().maximize();
 
 //        2. Enter your item and click search
         driver.findElement(By.cssSelector("#twotabsearchtextbox")).sendKeys("mixer");
         driver.findElement(By.cssSelector("#nav-search-submit-button")).click();
 
-//        3. Sort by rating and click most popular
+//        3. sorting by newest
 
         driver.findElement(By.cssSelector(".a-dropdown-prompt")).click();
         List<WebElement> dropDownElements = driver.findElements(By.className("a-dropdown-item"));
@@ -35,7 +36,7 @@ public class Mixer_Test {
         dropDownElements.get(4).click();
 
 
-//        4. Click first product
+//        4. Click third product
         Thread.sleep(3000);
         driver.findElement(By.xpath("(//div//div/h2/a[@class='a-link-normal a-text-normal'])[3]")).click();
 
@@ -48,22 +49,22 @@ public class Mixer_Test {
         System.out.println("quantityDropdownElements.size() = " + quantityDropdownElements.size());
 
         quantityDropdownElements.get(1).click();
-//        6. Pick to color
-//        7. Click add to chart
+
+//        7.  find before cart subTotal
         driver.findElement(By.cssSelector("#add-to-cart-button")).click();
 
         String priceBeforeChart = driver.findElement(By.xpath("(//span[@class='a-color-price hlb-price a-inline-block a-text-bold'])[1]")).getText();
         System.out.println("priceBeforeChart = " + priceBeforeChart);
 
-//        8. Click view cart & checkout
+//        8. Click add to chart
 
         driver.findElement(By.cssSelector("#hlb-view-cart-announce")).click();
         String chartPrice = driver.findElement(By.xpath("(//span[@class='a-size-medium a-color-base sc-price sc-white-space-nowrap'])[1]")).getText();
         System.out.println("chartPrice = " + chartPrice);
 
-//        9. Verify popup page’s subtotal and check out’s subtotal should be same
+//        9. Verify subtotal1 before chart equals to subtotal2 in chart
 
-        Assert.assertEquals(chartPrice,priceBeforeChart,"verify subtotal and chart subtotal is equal");
+        Assert.assertEquals(chartPrice,priceBeforeChart,"Verify subtotal1 before chart equals to subtotal2 in chart");
 
         Thread.sleep(2000);
 
